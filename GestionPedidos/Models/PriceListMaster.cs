@@ -19,5 +19,7 @@ namespace GestionPedidos.Models
         public DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public bool Status { get; set; }
+
+        public virtual ICollection<PriceListDetail> PriceListDetails { get; set; }
     }
 }

@@ -6,23 +6,23 @@ using System.Web;
 
 namespace GestionPedidos.Models
 {
-    public class PriceListDetail
+    public class OrderDetail
     {
         [Key]
         public int PositionID { get; set; }
-        public int PriceListID { get; set; }
+        public int OrderID { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public int ProductID { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
-        [Display(Name = "Unit Price")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
-        public decimal UnitPrice{ get; set; }
+        public int OrderQty { get; set; }
 
-        public bool Status { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        public decimal UnitPrice { get; set; }
 
-        public virtual PriceListMaster PriceListMasters { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        public int BonifiedQty { get; set; }
+
         public virtual Product Products { get; set; }
 
     }

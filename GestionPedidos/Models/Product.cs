@@ -32,5 +32,7 @@ namespace GestionPedidos.Models
         public string ModifiedBy { get; set; }
         // public ICollection<Category> Category {get; set;}
 
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
     }
 }

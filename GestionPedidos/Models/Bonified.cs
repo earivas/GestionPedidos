@@ -12,8 +12,13 @@ namespace GestionPedidos.Models
         public int BonifiedID { get; set; }
         public int CustomerID { get; set; }
         public int ProductID { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
+        [DataType(DataType.Currency)]
         public int MinimunOrderQty { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = false)]
+        [DataType(DataType.Currency)]
         public int BonifiedQty { get; set; }
 
         public bool status { get; set; }
@@ -23,6 +28,8 @@ namespace GestionPedidos.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.DateTime)]
         public DateTime BonifiedFinishDate { get; set; }
+
+        public decimal Factor { get { return BonifiedQty / MinimunOrderQty; } }
 
         public DateTime CreationDate { get; set; }
         public string CreateBy { get; set; }
