@@ -35,48 +35,67 @@ namespace GestionPedidos.Controllers
             int customerID = int.Parse(Request["CustomerID"]);
             var dateOrder = DateTime.Parse(Request["Customer.OrderDate"]);  // Customer.OrderDate
 
-            Order newOrder = new Order
-            {
-                CustomerID = customerID,
-                OrderDate = dateOrder
-                
-            };
-            db.Orders.Add(newOrder);
-            db.SaveChanges();
+            int lastOrderID = 0;
 
-            int lastOrderID = db.Orders.ToList().Select(o => o.OrderID).Max();
-            // Validar si el producto es Bonificado
-
-
-
-         
-
-            foreach (ProductOrder item in orderView.Products)
+            using (var transaction = db.Database.BeginTransaction())
             {
 
-                // ***  Validar que MinOrder y QtyBon nop sean null
-                    var MinOrder = db.Bonifieds.Where(b => b.CustomerID == customerID && b.ProductID == item.ProductID).Select(b => b.MinimunOrderQty).Sum();
-                    var QtyBon = db.Bonifieds.Where(b => b.CustomerID == customerID && b.ProductID == item.ProductID).Select(b => b.BonifiedQty).Sum();
-                    double Factor = (double)QtyBon / (double)MinOrder;
-                
-
-                var detail = new OrderDetail()
+                try
                 {
-                    OrderID = lastOrderID,
-                    ProductID = item.ProductID,
-                    OrderQty = item.OrderQty,
-                    UnitPrice = item.UnitPrice,
-                   // BonifiedQty = item.OrderQty * Factor//decimal.Parse(Factor)
 
-                };
+                    Order newOrder = new Order
+                    {
+                        CustomerID = customerID,
+                        OrderDate = dateOrder
 
-                db.OrderDetails.Add(detail);
+                    };
+                    db.Orders.Add(newOrder);
+                    db.SaveChanges();
+
+                    lastOrderID = db.Orders.ToList().Select(o => o.OrderID).Max();
+                    // Validar si el producto es Bonificado
+
+                    foreach (ProductOrder item in orderView.Products)
+                    {
+
+                        // ***  Validar que MinOrder y QtyBon nop sean null
+                        var MinOrder = db.Bonifieds.Where(b => b.CustomerID == customerID && b.ProductID == item.ProductID).Select(b => b.MinimunOrderQty).Sum();
+                        var QtyBon = db.Bonifieds.Where(b => b.CustomerID == customerID && b.ProductID == item.ProductID).Select(b => b.BonifiedQty).Sum();
+                        double Factor = (double)QtyBon / (double)MinOrder;
+
+                     //   int lastOrderID = db.Orders.ToList().Select(o => o.OrderID).Max();
+                     //   orderID = db.Orders.ToList().Select(o => o.OrderID).Max();
+                        var detail = new OrderDetail()
+                        {
+                            OrderID = lastOrderID,
+                            ProductID = item.ProductID,
+                            OrderQty = item.OrderQty,
+                            UnitPrice = item.UnitPrice,
+                            // BonifiedQty = item.OrderQty * Factor//decimal.Parse(Factor)
+
+                        };
+
+                        db.OrderDetails.Add(detail);
+                        db.SaveChanges();
+                    }
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    ViewBag.Error = "ERROR:  " + ex.Message;
+                    orderView = Session["OrderView"] as OrderView;
+              //      var listC = db.Customers.ToList();
+                    ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerName");
+                    ViewBag.BranchOfficeID = new SelectList(db.BranchOffices, "BranchOfficeID", "BranchOfficeAddress");
+                    return View(orderView);
+                }
+               
             }
 
-            db.SaveChanges();
-            orderView = Session["OrderView"] as OrderView;
-            var listC = db.Customers.ToList();
-            ViewBag.CustomerID = new SelectList(listC, "CustomerID", "CustomerName");
+            ViewBag.Message = string.Format("La orden: {0}, grabada correctamente", lastOrderID);
+            ViewBag.CustomerID = new SelectList(db.Customers, "CustomerID", "CustomerName");
             ViewBag.BranchOfficeID = new SelectList(db.BranchOffices, "BranchOfficeID", "BranchOfficeAddress");
             return View(orderView);
 
