@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Gestión de Pedidos Online</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,13 +18,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Gestión de Pedidos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catalogos
+                            <span class="caret"></span>
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
+                            <li>@Html.ActionLink("Productos", "Index", "Products")</li>
+                            <li>@Html.ActionLink("Lista Precios", "Index", "PriceListMasters")</li>
+                            <li>@Html.ActionLink("Canales", "Index", "SalesChannels")</li>
+                            <li>@Html.ActionLink("Tipo de Clientes", "Index", "CustomerTypes")</li>
+                            <li>@Html.ActionLink("Vendedores", "Index", "SalesMen")</li>
+                            <li>@Html.ActionLink("Clientes", "Index", "Customers")</li>
+                            <li>@Html.ActionLink("Sucursales", "Index", "BranchOffices")</li>
+                            <li>@Html.ActionLink("Bonificados", "Index", "Bonifieds")</li>
+                            <li>@Html.ActionLink("Pedidos", "NewOrder", "SalesOrder")</li>
+
+                        </ul> 
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,7 +53,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - ER Soluciones Informáticas </p>
         </footer>
     </div>
 

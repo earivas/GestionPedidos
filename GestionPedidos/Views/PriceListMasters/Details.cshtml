@@ -1,0 +1,82 @@
+﻿@model GestionPedidos.Models.PriceListMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PriceListMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceListName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceListName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceListDateActivation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceListDateActivation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceListFinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceListFinishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PriceListID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

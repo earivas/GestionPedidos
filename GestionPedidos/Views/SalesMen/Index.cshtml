@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GestionPedidos.Models.SalesMan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesManCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesManName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesManCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesManName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SalesManID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SalesManID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SalesManID })
+        </td>
+    </tr>
+}
+
+</table>

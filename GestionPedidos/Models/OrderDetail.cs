@@ -22,7 +22,7 @@ namespace GestionPedidos.Models
 
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public int BonifiedQty { get; set; }
-
+        public decimal Partial { get { return UnitPrice * OrderQty; } }
         public virtual Product Products { get; set; }
 
     }

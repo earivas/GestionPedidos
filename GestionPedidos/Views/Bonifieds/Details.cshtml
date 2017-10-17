@@ -1,0 +1,106 @@
+﻿@model GestionPedidos.Models.Bonified
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bonified</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customers.CustomerCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customers.CustomerCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Products.ProductReference)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Products.ProductReference)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimunOrderQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimunOrderQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonifiedQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonifiedQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonifiedActivationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonifiedActivationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BonifiedFinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BonifiedFinishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BonifiedID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

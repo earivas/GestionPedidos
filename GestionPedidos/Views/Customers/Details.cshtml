@@ -1,0 +1,114 @@
+﻿@model GestionPedidos.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentTerm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentTerm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceListID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceListID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesChennelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesChennelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesManID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesManID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

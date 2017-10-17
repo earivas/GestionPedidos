@@ -12,5 +12,7 @@ namespace GestionPedidos.Models
         public int BranchOfficeID { get; set; }
         public int CustomerID { get; set; }
         public string BranchOfficeAddress { get; set; }
+
+        public virtual Customer Customer { get; set; }
     }
 }

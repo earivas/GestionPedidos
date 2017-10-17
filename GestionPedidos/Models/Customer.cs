@@ -18,15 +18,24 @@ namespace GestionPedidos.Models
         public int PaymentTerm { get; set; }
 
         public int PriceListID { get; set; }
-
-        public int CanalID { get; set; }
+        public int SalesChennelID { get; set; }
         public int SalesManID { get; set; }
         public int CustomerTypeID { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime CreationDate { get; set; }
         public string CreateBy { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
+
+        public virtual SalesChannel SalesChannel { get; set; }
+        public virtual SalesMan SalesMen { get; set; }
+        public virtual CustomerType CustomerType { get; set; }
+        public virtual ICollection<BranchOffice> BranchOffice { get; set; }
 
     }
 }

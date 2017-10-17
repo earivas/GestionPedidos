@@ -20,11 +20,17 @@ namespace GestionPedidos.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string  CategoryDescription { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime CreationDate { get; set; }
         public string CreateBy { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime ModifiedDate { get; set; }
+
         public string ModifiedBy { get; set; }
 
-        public virtual Product Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

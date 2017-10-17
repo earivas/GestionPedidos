@@ -1,0 +1,26 @@
+﻿@model GestionPedidos.Models.SalesChannel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalesChannel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesChannelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesChannelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SalesChennelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
